@@ -92,10 +92,41 @@ class _ChatScreenState extends State<ChatScreen> {
                     Text(message['text'] ?? ''),
                     ),
                   );
-                ),
 
-              }
-            ))
+
+              },
+            ),
+            ),
+            Padding(padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                        controller: _controller,
+                        decoration: InputDecoration(
+                          hintText: 'Type your message...',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                  ),
+                  SizedBox(width: 8),
+
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(12),
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                    ),
+                    onPressed: _sendMessage,
+                    child: Icon(
+                    Icons.send,
+                    size: 30,
+                  ),),
+                ],
+              ),
+            ),
+
           ],
         ),
       ),
