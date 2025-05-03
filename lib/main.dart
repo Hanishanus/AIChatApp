@@ -64,15 +64,40 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
       ),
-      body:Column(
-        children: [
-          Expanded(child: ListView.builder(
-            itemCount: _messages.length,
-            itemBuilder: (context,index){
+      body:Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(child: ListView.builder(
+              itemCount: _messages.length,
+              itemBuilder: (context,index){
+                final message = _messages[index];
+                final isUser = message['sender'] == 'user';
+                return Align(
+                  alignment: isUser
+                      ? Alignment.centerRight
+                      :Alignment.centerLeft,
+                  child: Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: 4,horizontal: 8),
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: isUser
+                          ? Colors.blue[100]
+                          :Colors.grey[300],
+                      borderRadius:
+                        BorderRadius.circular(8)
+                    ),
+                    child:
+                    Text(message['text'] ?? ''),
+                    ),
+                  );
+                ),
 
-            }
-          ))
-        ],
+              }
+            ))
+          ],
+        ),
       ),
     );
   }
