@@ -60,9 +60,29 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hanis ChatBot"),
+        elevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Hanis ChatBot"),
+            Container(
+              height: 50,
+              width: 50,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/20211115_145423.jpg', // Make sure the image is in your assets folder
+
+                ),
+              ),
+
+
+            )
+          ],
+        ),
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
+
       ),
       body:Padding(
         padding: const EdgeInsets.all(8.0),
